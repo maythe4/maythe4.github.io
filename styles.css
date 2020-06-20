@@ -1,0 +1,41 @@
+body {
+    color: rgba(0, 0, 0, .7);
+}
+
+.app-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px;
+}
+
+.app {
+    border: 1px solid rgba(0, 0, 0, .7);
+    ;
+    margin: 5px;
+    padding: 20px;
+    width: 80px;
+    height: 80px;
+    touch-action: manipulation;
+    border-radius: 4px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 30px;
+}
+
+.app-description {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .7);
+}
