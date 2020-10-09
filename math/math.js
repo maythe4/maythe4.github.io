@@ -3,7 +3,6 @@ document.getElementById('buttons').addEventListener('click', onButtonClick);
 
 let lastResult = 0;
 let question = {};
-let answer = '?';
 let history = [];
 
 createQuestion();
@@ -14,7 +13,7 @@ function createQuestion() {
     question.number2 = getRandomNumber();
     question.operation = question.number2 >= question.number1 ? 0 : Math.floor(Math.random() * 2); // 0 = +, 1 = -
     question.expectedAnswer = question.operation === 0 ? question.number1 + question.number2 : question.number1 - question.number2;
-    answer = '?';
+    question.answer = '';
     showQuestion();
 }
 
@@ -25,8 +24,7 @@ function getRandomNumber() {
 
 function showQuestion() {
     question.text = question.number1 + (question.operation === 0 ? ' + ' : ' - ') + question.number2 + ' = ';
-    document.getElementById('question').innerHTML = question.text;
-    document.getElementById('answer').innerHTML = answer;
+    document.getElementById('question').innerHTML = question.text + question.answer;
 }
 
 function onButtonClick(event) {
@@ -74,23 +72,16 @@ function performAction(action) {
 }
 
 function addToAnswer(value) {
-    if (answer === '?') {
-        if (value !== '0') {
-            answer = value;
-        }
-    } else {
-        answer += value;
-    }
-    document.getElementById('answer').innerHTML = answer;
+    question.answer += value;
+    showQuestion();
 }
 
 function deleteFromAnswer() {
-    answer = answer.length <= 1 ? '?' : answer.slice(0, -1);
-    document.getElementById('answer').innerHTML = answer;
+    question.answer = question.answer.slice(0, -1);
+    showQuestion();
 }
 
 function checkAnswer() {
-    question.answer = answer;
     lastResult = question.expectedAnswer;
     putQuestionInHistory();
     createQuestion();
