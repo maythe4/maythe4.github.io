@@ -114,5 +114,5 @@ function putQuestionInHistory() {
     }
     innerHtml += '</ol>';
     document.getElementById('history').innerHTML = innerHtml;
-    document.getElementById('mistakes').innerHTML = 'Mistakes: ' + mistakes;
+    document.getElementById('mistakes').innerHTML = (new Date()).toLocaleDateString('en-US', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'}) + ', mistakes: ' + mistakes;
 }
