@@ -3,6 +3,7 @@ document.getElementById('buttons').addEventListener('click', onButtonClick);
 
 let lastResult = 0;
 let question = {};
+let randomNumbers = [];
 let history = [];
 
 createQuestion();
@@ -18,8 +19,20 @@ function createQuestion() {
 }
 
 function getRandomNumber() {
-    let extra = (Math.floor(history.length / 10) * 10) + 1;
-    return Math.floor(Math.random() * 9) + extra;
+    if (randomNumbers.length < 1)  {
+        let start = (Math.floor((history.length + 1) / 10) * 10) + 1;
+        for (let i = start; i < start + 9; i++) randomNumbers.push(i);
+        shuffleArray(randomNumbers);
+        randomNumbers.push(randomNumbers[0]);
+    }
+    return randomNumbers.pop();
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 function showQuestion() {
