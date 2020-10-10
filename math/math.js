@@ -3,7 +3,6 @@ document.getElementById('buttons').addEventListener('click', onButtonClick);
 
 let state = {};
 loadState();
-createQuestion();
 
 function createQuestion() {
     state.question = {};
@@ -12,6 +11,7 @@ function createQuestion() {
     state.question.operation = state.question.number2 >= state.question.number1 ? 0 : Math.floor(Math.random() * 2); // 0 = +, 1 = -
     state.question.expectedAnswer = state.question.operation === 0 ? state.question.number1 + state.question.number2 : state.question.number1 - state.question.number2;
     state.question.answer = '';
+    saveState();
     showQuestion();
 }
 
@@ -155,11 +155,12 @@ function loadState() {
     let savedState = localStorage.getItem('math');
     if (savedState) {
         state = JSON.parse(savedState);
-        createQuestion();
+        showQuestion();
         showHistory();
     }
     else {
         resetState();
+        createQuestion();
     }
 }
 
