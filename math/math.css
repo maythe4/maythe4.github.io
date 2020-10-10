@@ -2,21 +2,22 @@
     outline: none;
 }
 
-#container {
+.flex-center, .flex-center-column {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-center-column {
     flex-direction: column;
 }
 
-#question, #answer, #mistakes {
+.centered-with-top-margin {
     text-align: center;
     margin: 10px 0 0 0;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+.padding-right-bottom {
     padding: 0 10px 10px 0;
 }
 
@@ -36,11 +37,6 @@
 .button-clicked {
     background-color: #ffff99;
     transition: all .3s;
-}
-
-#history {
-    display: flex;
-    justify-content: center;
 }
 
 .wrong {
